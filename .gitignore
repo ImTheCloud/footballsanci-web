@@ -1,0 +1,9 @@
+# Dépendances et build
+node_modules/
+dist/
+.vite/
+.cache/
+*.log
+
+# Cache de déploiement
+node_modules/.cache/
