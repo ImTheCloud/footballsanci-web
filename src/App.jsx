@@ -1,25 +1,24 @@
-import { useEffect, useState } from "react";
-import { db } from "../services/firebase.js";
-import { collection, getDocs } from "firebase/firestore";
+import React from "react";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+
+import Ranking from "./sections/Ranking";
+import History from "./sections/History";
+import Statistics from "./sections/Statistics";
+import Draw from "./sections/Draw";
 
 function App() {
-    const [users, setUsers] = useState([]);
-
-    useEffect(() => {
-        async function fetchData() {
-            const snapshot = await getDocs(collection(db, "users"));
-            setUsers(snapshot.docs.map(doc => doc.data()));
-        }
-        fetchData();
-    }, []);
-
     return (
-        <div>
-            <h1>Utilisateurs</h1>
-            {users.map((u, i) => (
-                <p key={i}>{u.name}</p>
-            ))}
-        </div>
+        <>
+            <Header />
+            <main>
+                <section id="ranking"><Ranking /></section>
+                <section id="history"><History /></section>
+                <section id="statistics"><Statistics /></section>
+                <section id="draw"><Draw /></section>
+            </main>
+            <Footer />
+        </>
     );
 }
 
